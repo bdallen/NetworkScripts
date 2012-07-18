@@ -1,0 +1,9 @@
+#  Printer Port Setup
+# --------------------
+# Format
+#     0       1        2         3            4              5         6     7
+# LOCATION:PORTNAME:IPADDRESS:PRINTERNAME:DRIVERFOLDERINF:DRIVERNAME:DUPLEX:A4
+#
+#
+# -------- Sample -------------
+#WBNME:PTRNME_50:10.x.x.x:PTRNME_PTR01:BRPCL5\BHPCL5E.INF:Brother PCL5e Driver:Y:Y
