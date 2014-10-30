@@ -1,0 +1,27 @@
+# Dynamic DNS EoIP Tunnel Script
+# ------------------------------
+# History :
+# 6-Oct-2014 - Brendon Allen - Initial Write
+#
+#
+#
+
+####### Script Settings #########
+:local ServerDnsName "DNSName";   
+:local interfaceName "TunnelName";
+##########################
+
+:log info ("Start check for possible change of EoIP remote dynamic IP address");
+
+:global eoipserverip;
+
+:if ([ :typeof $eoipserverip ] = "nothing" ) do={ :global eoipserverip 0.0.0.0/0 }
+:local current [:resolve "$ServerDnsName"];
+:log info ("$eoipserverip" . " vs " . "$current");
+:if ($eoipserverip = $current) do={
+  :log info ("No EoIP Remote IP address change necessary");
+} else={
+  /interface eoip set [/interface eoip find name="$interfaceName"]   remote-address="$current";
+  :log info ("EoIP Remote dynamic IP address changed from " . "$eoipserverip" . " to " . "$current" );
+  :global eoipserverip $current;
+}
