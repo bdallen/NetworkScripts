@@ -34,6 +34,7 @@ TO_MAIL=$4
         echo "DATA"
         sleep $WAIT_TIME
         echo "Subject:Test message"
+        sleep $WAIT_TIME
         echo "From:$FROM_MAIL"
         echo "To:$TO_MAIL"
         echo " "
